@@ -1,5 +1,5 @@
-# toontown-rewritten-custom-launcher
-A custom launcher for Toontown Rewritten. Inspired by Shticker Book Rewritten.
+# Toontown Redecked
+A custom launcher for Toontown Rewritten, optimised for the Steam Deck. Inspired by Shticker Book Rewritten.
 ## Planned Features
 - Multiple account saving
 - Access to ToonHQ
