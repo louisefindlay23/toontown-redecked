@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; connect-src https://www.toontownrewritten.com/api/login"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; connect-src https://www.toontownrewritten.com/api/login"
+    />
+    <title>Toontown Redecked Launcher</title>
+  </head>
+
+  <body>
+    <h1>Toontown Redecked Launcher</h1>
+
+    <form id="ttr-login" name="ttr-login">
+      <label for="username">Username:</label>
+      <input
+        name="username"
+        type="text"
+        placeholder="Enter your username or email"
+      />
+      <label for="password">Password:</label>
+      <input
+        name="password"
+        type="password"
+        placeholder="Enter your password"
+      />
+      <input type="submit" value="Login" />
+    </form>
+
+    <p id="ttr-login-error"></p>
+
+    <form id="ttr-tfa" name="ttr-tfa">
+      <label for="tfa-token">Toonguard Code:</label>
+      <input
+        name="tfa-token"
+        type="text"
+        placeholder="Enter your Toonguard Code"
+      />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script src="login.js"></script>
+  </body>
+</html>
