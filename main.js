@@ -24,26 +24,31 @@ app.whenReady().then(() => {
 ipcMain.on("ttr-gamecookies", (event, gameserver, cookie) => {
   console.info(`Gameserver: ${gameserver} Cookie: ${cookie}`);
 
-  process.env.TTR_GAMESERVER = gameserver;
-  process.env.TTR_PLAYCOOKIE = cookie;
-
-  const options = {
-    env: {
-      ...process.env,
-    },
-  };
-
-  const child = require("child_process").execFile;
+  const { spawn } = require("child_process");
   const executablePath =
     "C:\\Program Files (x86)\\Toontown Rewritten\\TTREngine64.exe";
+  const args = [];
+  const env = {
+    TTR_GAMESERVER: "gameserver.toontownrewritten.com",
+    TTR_PLAYCOOKIE: cookie,
+  };
 
-  child(executablePath, options, function (err, data) {
-    if (err) {
-      console.error(err);
-      return;
-    }
+  const child = spawn(executablePath, args, { env });
 
-    console.log(data.toString());
+  child.stdout.on("data", (data) => {
+    console.log(`Child process stdout: ${data}`);
+  });
+
+  child.stderr.on("data", (data) => {
+    console.error(`Child process stderr: ${data}`);
+  });
+
+  child.on("error", (err) => {
+    console.error("Child process error:", err);
+  });
+
+  child.on("close", (code) => {
+    console.log(`Child process exited with code ${code}`);
   });
 });
 

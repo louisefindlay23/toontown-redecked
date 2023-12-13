@@ -41,11 +41,10 @@ function login(username, password) {
           //tfa(username, password, authToken);
           break;
         case "delayed":
-          // code block
           console.info("Delayed");
+          setTimeout(() => login(username, password), 30000);
           break;
         case "true":
-          // code block
           console.info("Success");
           const gameserver = data.gameserver;
           const cookie = data.cookie;
