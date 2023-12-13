@@ -49,7 +49,7 @@ function login(username, password) {
           console.info("Success");
           const gameserver = data.gameserver;
           const cookie = data.cookie;
-          console.info(`Gameserver: ${gameserver} Cookie: ${cookie}`);
+          window.electronAPI.ttrGameCookies(gameserver, cookie);
           break;
       }
     })
