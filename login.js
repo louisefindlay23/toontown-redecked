@@ -10,16 +10,15 @@ loginForm.addEventListener("submit", () => {
 });
 
 function login(username, password) {
-  fetch("https://www.toontownrewritten.com/api/login?format=json", {
-    method: "POST",
-    body: {
-      username: username,
-      password: password,
-    },
-    headers: {
-      "Content-Type": "x-www-form-urlencode",
-    },
-  })
+  fetch(
+    `https://www.toontownrewritten.com/api/login?format=json&username=${username}&password=${password}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded",
+      },
+    }
+  )
     .then(function (response) {
       if (response.ok) {
         return response.json();
@@ -45,9 +44,12 @@ function login(username, password) {
           // code block
           console.info("Delayed");
           break;
-        case true:
+        case "true":
           // code block
           console.info("Success");
+          const gameserver = data.gameserver;
+          const cookie = data.cookie;
+          console.info(`Gameserver: ${gameserver} Cookie: ${cookie}`);
           break;
       }
     })
